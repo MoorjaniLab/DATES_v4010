@@ -1,0 +1,18 @@
+#!/usr/bin/perl  -w 
+
+use Getopt::Std ;
+
+getopts('h:',\%opts) ;  
+
+if (defined $opts{"h"}) {
+ $hdr = $opts{"h"} ;
+}
+else {
+ die "h parameter compulsory\n" ;
+}
+$T1 = "/tmp/t1.$$" ;
+open (Y1, ">$T1") || die "badly\n" ;
+print Y1 "$hdr\n" ; 
+close Y1 ;
+system "cat $T1 -" ;
+unlink $T1 ;
