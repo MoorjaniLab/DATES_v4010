@@ -1,7 +1,8 @@
 # DATES_v4010
 
 DATES (Distribution of Ancestry Tracts of Evolutionary Signals) is a method to estimate the time of admixture in ancient DNA samples described in Chintalapati et al. 2022 biorxiv.
-**New feature: Method now supports arbitrary number of chromosomes.
+
+##### **New feature: Method now supports arbitrary number of chromosomes.
 
 #### Installation
 To make the DATES executable, you will need the following libraries:
