@@ -42,7 +42,7 @@ $parfile: Name of parameter file.  <br />
 genotypename: input genotype filename   # in eigenstrat format
 snpname:    input snp filename          # in eigenstrat format
 indivname:  input indiv filename        # in eigenstrat format
-admixlist:  filename                    # This file contains the source and admixed populations to use for the analysis. Each line has the format: <source1> <source2> <source3> <testpopulation> <output_directory>, where source1 and source2 are the reference populations for the ancestral populations, testpop is the name of the admixed population and the output_directory is the name of the output directory.Output files are of the format output_directory/testpopulation.out
+admixlist:  filename                    # This file contains the source and admixed populations to use for the analysis. Each line has the format: <source1> <source2> <testpopulation> <output_directory>, where source1 and source2 are the reference populations for the ancestral populations, testpop is the name of the admixed population and the output_directory is the name of the output directory.Output files are of the format output_directory/testpopulation.out
 binsize:    number                      # in Morgans, range is from 0-1. Optimal binsize of 0.001 is recommended.
 maxdis:     number                      # in Morgans, range is 0-1. For quicker runs, use max_distance < 1.0. However, for recent admixture,   ensure that max_distance is greater than the expected admixture LD blocks.
 seed:       number                      # Random seed to ensure reproducibility of runs. 
