@@ -3,7 +3,7 @@ extern int fancynorm, verbose, plotmode, outnum;
 extern FILE *fstdetails;
 
 static Indiv **indm;
-static double quartile = -1.0;
+static double qquartile = -1.0;
 static int jackweight = YES;
 // .05 will trim jackknife stats
 static void wjackestx (double *est, double *sig, double mean, double *jmean,
@@ -2586,7 +2586,7 @@ setjquart (int pjack, int jackw, double qq)
 {
 
   jackweight = jackw;
-  quartile = qq;
+  qquartile = qq;
   pubjack = pjack;
 
 }
@@ -2641,12 +2641,12 @@ oldwjackest (double *est, double *sig, double mean, double *jmean,
   mmean = mean;
   if (jackweight == NO)
     vclear (jjwt, 1.0, n);
-  if (quartile > 0.0) {
+  if (qquartile > 0.0) {
     ZALLOC (ord, n, int);
     sortit (jjmean, ord, n);
     dpermute (jjwt, ord, n);
     free (ord);
-    y = quartile * (double) n;
+    y = qquartile * (double) n;
     m = nnint (y);
     mmean = vdot (jjmean + m, jjwt + m, n - m) / asum (jjwt + m, n - m);
   }
@@ -3505,7 +3505,7 @@ ff3val (double *ff3, int a, int b, int c, int n)
 void
 estjackq (double *pjest, double *pjsig, double *btop, double *bbot,
 	  double *wjack, int nblocks)
-// use untrimmed standard error even if quartile set
+// use untrimmed standard error even if qquartile set
 {
 
   double gtop, gbot, top, bot;
@@ -3563,7 +3563,7 @@ estjackq (double *pjest, double *pjsig, double *btop, double *bbot,
   wjackestx (&jest, &jsig, mmean, xmean, xwt, g);
   if (jackweight == NO)
     vclear (jjwt, 1.0, n);
-  if (quartile > 0.0) {
+  if (qquartile > 0.0) {
     ZALLOC (ord, n, int);
     sortit (jjmean, ord, n);
     if (pubjack) {
@@ -3574,7 +3574,7 @@ estjackq (double *pjest, double *pjsig, double *btop, double *bbot,
     dpermute (wtop, ord, n);
     dpermute (wbot, ord, n);
     free (ord);
-    y = quartile * (double) n;
+    y = qquartile * (double) n;
     m = nnint (y);
     g = n - 2 * m;
     xbot = wbot + m;
